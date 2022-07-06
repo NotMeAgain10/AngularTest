@@ -1,0 +1,21 @@
+<div class="card relative full-height-card">
+    <div class="card-body card-body-over">
+        <div class="card-title d-flex  align-items-center flex-wrap">
+            <div>
+                <img [src]="landmark?.photo_thumb?.url" class="avatar-sm"/>
+            </div>
+            <div >
+                <a class="redirect-link mx-3"  [routerLink]="getLandmarkUrl()">{{landmark?.title}}</a>
+            </div>
+        </div>
+        <hr />
+        <img  [src]="landmark?.photo_thumb?.url" class="bg-image" />
+      <!-- <h5 class="card-title"></h5> -->
+      <p class="card-text description-text">
+        {{getShortInfo()}} <span *ngIf="!isExpanded && shouldExpand()" (click)="toggleExpandShortInfo()" class="slow-transition text-primary font-weight-bold pointer show-more">...</span>
+      </p>
+      <span  *ngIf="isExpanded"  (click)="toggleExpandShortInfo()" class="text-primary font-weight-bold pointer slow-transition">Show Less...</span>
+      <ng-content></ng-content>
+    </div>
+  
+  </div>

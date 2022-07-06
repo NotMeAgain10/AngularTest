@@ -1,0 +1,9 @@
+<div *ngIf="loaderService.isLoading; else content" class="container d-flex align-items-center column justify-content-center" style="height:100vh">
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>

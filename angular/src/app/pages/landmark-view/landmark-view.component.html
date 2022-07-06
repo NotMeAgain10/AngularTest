@@ -1,0 +1,33 @@
+
+<app-two-columns-layout>
+    <div slot="left" class="row">
+        <div class="col-md-12">
+            <img [src]="landmarkService.landmark?.photo?.url" [alt]="landmarkService.landmark?.title" class="img-fluid clickable-image" width="100%" (click)="toggleImageFullScreen()"/>
+        </div>
+    </div>
+    <div class="row" slot="right">
+        <div class="col-md-12">
+            <app-landmark-card [landmark]="landmarkService.landmark">
+                <div class="col-md-12 my-2">
+                    <app-title>
+                        Description 
+                        <hr />
+                    </app-title>
+                    <p>
+                        {{landmarkService.landmark?.description}}
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <a [href]="landmarkService.landmark?.url" target="_blank">Visit Blog</a>
+                </div>
+            </app-landmark-card>
+        </div>
+
+    </div>
+</app-two-columns-layout>
+<ng-image-fullscreen-view
+    [images]="[{image:landmarkService.landmark?.photo?.url}]"
+    [imageIndex]="+0"
+    [show]="showImage"
+    (close)="toggleImageFullScreen()"></ng-image-fullscreen-view>
+    

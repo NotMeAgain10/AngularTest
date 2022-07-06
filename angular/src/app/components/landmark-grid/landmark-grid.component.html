@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4  col-xs-12">
+            <app-autocomplete></app-autocomplete>
+        </div>
+        <div class="offset-md-6 col-md-2 col-xs-12 col-sm-12">
+            <div class="row">
+                <div class="col-md-6 col-xs-6 col-sm-6" *ngFor="let view of availableGridOptions; let i = index">
+                    <button [disabled]="landmarkService.landmarks?.length === 0" [class]="selectedViewIndex === i ? 'btn btn-sm btn-warning' : 'btn btn-sm' " (click)="setSelectedViewIndex(i)">
+                        <img [src]="view.icon" alt="Grid selection Icon" class="grid-selection-icon"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="col-md-12 col-xs-12"  *ngIf="landmarkService.landmarks?.length; else warningContainer">
+            <div class="row">
+                <div [class]="getGridClass()" *ngFor="let landmark of landmarkService.landmarks" class="transition-container">
+                    <app-landmark-card [landmark]="landmark" [maxShortInfoLength]="availableGridOptions[selectedViewIndex].maxShortInfoLength"></app-landmark-card>
+                </div>
+            </div>
+        </div>
+        <ng-template #warningContainer>
+            <div class="col-md-12 col-xs-12" *ngIf="!loaderService.isLoading">
+                <img src="/assets/no-results.jpg" width="100%" height="700px" />
+            </div>
+        </ng-template>
+    </div>
+</div>

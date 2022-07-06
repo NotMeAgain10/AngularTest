@@ -1,0 +1,8 @@
+.clickable-image {
+    cursor:pointer 
+}
+
+.clickable-image:hover {
+    box-shadow: 1px 3px 5px #444;
+    animation: slow-motion;
+}
